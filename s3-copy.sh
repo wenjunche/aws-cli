@@ -1,0 +1,1 @@
+aws s3 cp myDir s3://mybucket/myDir --recursive --exclude "*.jpg"
