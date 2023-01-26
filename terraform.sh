@@ -7,3 +7,5 @@ terraform output [variable]
 terraform plan -refresh-only
 
 terraform apply -refresh-only
+
+terraform state show 'aws_cloudfront_distribution.proxy'
