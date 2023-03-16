@@ -4,4 +4,4 @@
 #
 # then create a PR
 
-gh workflow run workflow_name --ref branch-name
+gh workflow run workflow_name --ref branch-name [-f enviroment=staging]
