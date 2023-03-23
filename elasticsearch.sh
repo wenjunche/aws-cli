@@ -29,3 +29,11 @@ Body:
     }
   }
 }
+
+# To launch ElasticSearch docker image locally
+# Environment
+#   DISCOVERY.TYPE: single-node
+#   XPACK.SECURITY.ENABLED: false
+# Ports
+#   9200/tcp:  0.0.0.0:9200
+#   9300/tcp:  0.0.0.0:9300
