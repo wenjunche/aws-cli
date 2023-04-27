@@ -14,3 +14,6 @@
 , r.rolbypassrls
 FROM pg_catalog.pg_roles r
 ORDER BY 1;
+
+
+grant role1_name, role2_name to user_name;
