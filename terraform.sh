@@ -1,3 +1,6 @@
+# update provider
+terraform init --upgrade
+
 terraform state list
 
 terraform state show 'module.s3.aws_s3_bucket.cdn'
