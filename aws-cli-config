@@ -1,0 +1,23 @@
+// example of multiple accounts 
+// ~/.aws/config
+
+[default]
+region = us-east-1
+
+[profile sandbox]
+role_arn = arn:aws:iam::aws_account_number_for_sandbox_org:role/OrganizationAccountAccessRole
+source_profile = development
+region=us-west-2
+
+// ~/.aws/credentials
+[default]
+aws_access_key_id = asdf
+aws_secret_access_key = asdf
+
+[development]
+aws_access_key_id = asdf
+aws_secret_access_key = asdf
+
+// to run AWS CLI or SDK with specific profile
+aws s3 ls --profile=sandbox
+cdk deploy --profile=sandbox
