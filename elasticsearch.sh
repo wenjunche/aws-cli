@@ -100,3 +100,20 @@ Body:
 
 # delete an alias
 curl -X "DELETE" http://localhost:9200/*/_alias/analytics.rvm.event
+
+
+# Check space allocation
+_cat/allocation?v&s=node
+
+# check shard status
+_cat/shards?v&s=index
+
+#reset rebalance config
+PUT _cluster/settings
+
+{
+  "transient": {
+    "cluster.routing.allocation.disk.watermark.high": null,
+    "cluster.routing.allocation.disk.watermark.flood_stage": null
+  }
+}
