@@ -1,4 +1,7 @@
 
+# bootstrap 
+cdk bootstrap aws://primary-account_number/us-west-2
+
 # bootstrap with specific account
 # "sandbox" needs to be defined in ~/.aws/config and ~/.aws/credentials
 cdk bootstrap aws://sandbox-account_number/us-west-2 --trust primary-account-number --cloudformation-execution-policies "arn:aws:iam::aws:policy/AdministratorAccess"  --profile=sandbox
