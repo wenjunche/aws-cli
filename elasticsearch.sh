@@ -53,6 +53,24 @@ GET analytics.rvm.event/_search
   }
 }
 
+# search by matching a field
+/workspace.analytics.event/_search
+{
+  "query": {
+    "match_phrase": {
+      "app_config": "https://bmo-dev.os.openfin.co/api/platform.json"
+    }
+  }
+}
+
+{
+  "query": {
+    "match_phrase_prefix": {
+      "app_config": { "query": "https://bmo-dev.os.openfin.co/api/platform" }
+    }
+  }
+}
+
 # delete by date range.  this query returns a task
 POST analytics.rvm.event/_delete_by_query?wait_for_completion=false
 {
