@@ -1,5 +1,6 @@
 version: '2.1'
 # git@github.com:conduktor/kafka-stack-docker-compose.git
+# https://docs.confluent.io/platform/current/installation/versions-interoperability.html#cp-and-apache-ak-compatibility
 services:
   zoo1:
     image: confluentinc/cp-zookeeper:7.5.1
