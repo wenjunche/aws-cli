@@ -1,0 +1,26 @@
+title OAuth2 Authorization Code Grant Sequence Diagram for Workspace
+# powered by https://www.websequencediagrams.com/
+actor End User
+participant Workspace Desktop
+participant Workspace Service
+participant Azure/AD
+End User->Workspace Desktop: Launch Workspace Desktop.
+note right of End User 
+Governed by OAuth2 spec
+end note
+Workspace Desktop->Azure/AD: Redirect to Azure/AD (IdP) Authorization Endpoint with client_id and redirect_uri
+Azure/AD->End User: Redirect to Auzre/AD login page
+End User->Azure/AD: Submit Credentials
+Azure/AD->Azure/AD: Validate credentials
+Azure/AD->Workspace Desktop: Redirect to redirect_url with Authorization Code.
+Workspace Desktop->Workspace Service: Request handler for redirect_url captures Authorization Code from Azure/AD.
+Workspace Service->Azure/AD: Request Access Token based upon Authorization Code
+Azure/AD->Azure/AD: Validate Authorization Code
+Azure/AD->Workspace Service: Return Access Token
+Workspace Service->Workspace Service: Create cookies to keep trace of the new session
+Workspace Service->Workspace Desktop: Redirect to login success page.
+Workspace Desktop->Workspace Service: RESTful Requests.
+Workspace Service->Workspace Service: Validate session cookies.
+Workspace Service->Azure/AD: If Access Token expires, send refresh request with client_id and client_secret.
+Azure/AD->Workspace Service: Return new Access Token.
+Workspace Service->Workspace Desktop: Return result for the RESTful request
