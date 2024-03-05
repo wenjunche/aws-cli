@@ -85,6 +85,32 @@ POST analytics.rvm.event/_delete_by_query?wait_for_completion=false
   }
 }
 
+#delete by date range and event type
+POST analytics.rvm.event/_delete_by_query?wait_for_completion=false
+{
+  "query": {
+    "bool": {
+      "must": [],
+      "filter": [
+        {
+          "range": {
+            "timestamp": {
+              "format": "strict_date_optional_time",
+              "gte": "2023-10-01T14:00:00.000Z",
+              "lte": "2023-11-01T14:05:00.000Z"
+            }
+          }
+        },
+        {
+          "match_phrase": {
+            "event.type": "heartbeat"
+          }
+        }
+      ]
+    }
+  }
+}
+
 # query task by ID
 _tasks/pkTbKeM8TmKlXSUFp-dFnw:254410228
 
