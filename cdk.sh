@@ -13,3 +13,9 @@ cdk deploy --profile=sandbox
 cdk destroy --profile=sandbox
 
 cdk diff --profile=sandbox
+
+# show cached data
+cdk context
+
+# delete one item from cache data,  get item_number from last command
+cdk context --reset item_number
